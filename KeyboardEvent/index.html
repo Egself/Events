@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family:sans-serif;
+            background-color: rgba(240, 248, 255, 0.13);
+            padding: 20px;
+        }
+        h1{
+            text-align: center;
+            color: #333;
+        }
+        .input-container{
+            max-width:600px;
+            text-align: center;
+            font-size: 16px;
+            margin: 20px auto;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+        }
+        ul{
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        li{
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Keyboard events and map() questions </h1>
+    <div class="input-container">
+        <input type="text" id="searchbox" placeholder="Type something...">
+    </div>
+
+    <ul id="resultList"></ul>
+
+    <script>
+        let lastelements = []
+        let searchbox = document.getElementById("searchbox");
+        let resultList = document.getElementById("resultList")
+        searchbox.addEventListener("keypress", (Purekey) =>{
+            let res = /^[a-zA-ZİüÜğĞçÇöÖ]+$/;
+            if(res.test(Purekey.key)){
+                let element = document.createElement("li");
+                element.textContent = `Letter: ${Purekey.key}`;
+                resultList.appendChild(element)
+                lastelement.push(element);
+            }
+        });
+
+        searchbox.addEventListener("keypress", (Purekey) =>{
+            if(Purekey.code == "Space"){
+                let element = document.createElement("li");
+                element.textContent = "Pressed Space Bar";
+                resultList.appendChild(element)
+                lastelement.push(element);
+            }
+        })
+
+        searchbox.addEventListener("keypress", (Purekey) =>{
+            if(Purekey.code == "Backspace"){
+                delete lastelements[lastelements.length - 1];
+            }
+        })
+    </script>
+
+</body>
+</html>
